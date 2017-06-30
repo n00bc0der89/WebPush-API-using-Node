@@ -12,25 +12,31 @@
      <script type="text/javascript" src="application.js"></script>
     </head>
 <body>
-    <input class="webpush-button" type="button" value="Click"/>
+   <h1>Please wait notification is on its way !!!! </h1>
      
 </body>    
 </html>
 
 <script type="text/javascript">
 
-$('.webpush-button').on('click', (e) => {
-  navigator.serviceWorker.ready
+function pushnotify()
+{
+   navigator.serviceWorker.ready
   .then((serviceWorkerRegistration) => {
     serviceWorkerRegistration.pushManager.getSubscription()
     .then((subscription) => {
       $.post('/push', {
         subscription: subscription.toJSON(),
-        message: 'You clicked a button!'
+        message: "New message for you!"
       });
     });
   });
-});
+}
+/*$('.webpush-button').on('click', (e) => {
+ 
+});*/
+
+setInterval(pushnotify,8000);
 
 </script>
     
