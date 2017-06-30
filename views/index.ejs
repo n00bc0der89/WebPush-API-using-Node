@@ -1,0 +1,36 @@
+<html>
+    <head>
+   <!-- <link rel="manifest" href="manifest.json" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+          var receivedData = [<%=decodedVapidPublicKey.data %>];
+          var sreceivedData  = new Uint8Array(receivedData).buffer;
+
+       window.vapidPublicKey = sreceivedData;
+      
+    </script>
+     <script type="text/javascript" src="application.js"></script>
+    </head>
+<body>
+    <input class="webpush-button" type="button" value="Click"/>
+     
+</body>    
+</html>
+
+<script type="text/javascript">
+
+$('.webpush-button').on('click', (e) => {
+  navigator.serviceWorker.ready
+  .then((serviceWorkerRegistration) => {
+    serviceWorkerRegistration.pushManager.getSubscription()
+    .then((subscription) => {
+      $.post('/push', {
+        subscription: subscription.toJSON(),
+        message: 'You clicked a button!'
+      });
+    });
+  });
+});
+
+</script>
+    
