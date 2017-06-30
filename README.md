@@ -1,6 +1,7 @@
 # WebPush-API-using-Node
 
 Framework : Nodejs + Express + EJS(View Engine)
+
 Node module used for WebPush API : web-push
 
 Working : 
@@ -12,10 +13,17 @@ Working :
 
 https://rossta.net/blog/using-the-web-push-api-with-vapid.html
 
-Directory structure : scripts -  application.js - Validates whether browser supports notification, creates service worker, Registers it                                                     and subscribes to it.
-                                 serviceworker.js - Has push eventlistener which pushes the message to client.(It gets registered within                                                        application.js)
-                                 app.js -  Start script of node server. Creates VAPID Key and pass it to client. Postback handler to send                                             notification to service worker.
-                                 index.ejs - Index page of the application.
+Directory structure : 
+
+scripts -
+
+application.js - Validates whether browser supports notification, creates service worker, Registers it and subscribes to it.
+
+serviceworker.js - Has push eventlistener which pushes the message to client.(It gets registered within  application.js)
+
+app.js -  Start script of node server. Creates VAPID Key and pass it to client. Postback handler to send notification to service worker.
+                                 
+index.ejs - Index page of the application.
                                  
                                  
                                  
